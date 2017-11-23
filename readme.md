@@ -1,0 +1,1 @@
+SpringOne Platform 2017 - Not only Reactive Data Access
