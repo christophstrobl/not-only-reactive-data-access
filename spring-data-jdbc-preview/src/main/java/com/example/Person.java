@@ -26,7 +26,7 @@ import org.springframework.data.annotation.Id;
 @Data
 public class Person {
 
-	final @Id Long id;
+	@Id Long id;
 	final String firstname;
 
 }

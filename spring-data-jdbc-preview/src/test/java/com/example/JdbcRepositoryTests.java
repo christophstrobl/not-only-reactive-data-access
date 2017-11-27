@@ -34,13 +34,14 @@ public class JdbcRepositoryTests {
 
 	@Autowired PersonRepository repository;
 
-	Person luke = new Person(100L, "luke");
+	Person luke = new Person("luke");
 
 	@Test
 	@DisplayName("Just return the found object - all fine.")
 	void saveAndRetrieve() {
 
 		Person saved = repository.save(luke);
+		assertThat(saved.getId()).isNotNull();
 		assertThat(repository.findById(saved.id)).contains(luke);
 	}
 
