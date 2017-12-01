@@ -30,7 +30,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
  */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class JdbcRepositoryTests {
+class JdbcRepositoryTests {
 
 	@Autowired PersonRepository repository;
 
