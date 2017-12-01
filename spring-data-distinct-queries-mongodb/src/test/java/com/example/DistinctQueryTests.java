@@ -42,7 +42,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
  */
 @ExtendWith(SpringExtension.class)
 @DataMongoTest
-public class DistinctQueryTests {
+class DistinctQueryTests {
 
 	@Autowired MongoTemplate template;
 

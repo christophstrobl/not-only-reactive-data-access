@@ -95,18 +95,21 @@ class FluentMongoAPITests {
 		TerminatingFind<Person> findLuke = template.query(Person.class) //
 				.matching(query(where("firstname").is("luke")));
 
+
 		assertThat(findLuke.oneValue()).isEqualTo(luke);
 
 		template.save(new Person("luke"));
 
-		assertThat(catchThrowable(() -> findLuke.oneValue())).isInstanceOf(IncorrectResultSizeDataAccessException.class);
+		assertThat(catchThrowable(() -> findLuke.oneValue())) //
+				.isInstanceOf(IncorrectResultSizeDataAccessException.class);
 	}
 
 	@Test
-	@DisplayName("Make sure queries return unique results.")
+	@DisplayName("Want to map things to another type? Projections to the rescue.")
 	void projectionSupport() {
 
-		Jedi jedi = template.query(Person.class).as(Jedi.class) //
+		Jedi jedi = template.query(Person.class) //
+				.as(Jedi.class) //
 				.matching(query(where("firstname").is("luke"))) //
 				.firstValue();
 
@@ -115,7 +118,7 @@ class FluentMongoAPITests {
 
 	@Test
 	@DisplayName("Not only for queries, but also other operations")
-	public void updateSupport() {
+	void updateSupport() {
 
 		UpdateResult updateResult = template.update(Person.class) //
 				.matching(query(byExample(han))) //
@@ -132,7 +135,7 @@ class FluentMongoAPITests {
 		@Id String id;
 		@Field("first_name") String firstname;
 
-		public Person(String firstname) {
+		Person(String firstname) {
 			this.firstname = firstname;
 		}
 	}

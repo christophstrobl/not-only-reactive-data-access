@@ -21,6 +21,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.springframework.lang.Nullable;
+
 /**
  * @author Christoph Strobl
  * @since 2017/11
@@ -29,7 +31,7 @@ import javax.persistence.Id;
 @Entity
 public class Person {
 
-	private @GeneratedValue @Id Long id;
+	private @Nullable @GeneratedValue @Id Long id;
 	private String firstname;
 
 	public Person(String firstname) {
